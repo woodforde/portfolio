@@ -14,4 +14,11 @@ export default defineConfig({
             "@components": path.resolve(__dirname, "./src/components"),
         },
     },
+    build: {
+        // Relative to the root
+        root: "src",
+        outDir: "../dist",
+        emptyOutDir: true,
+        minify: true,
+    },
 });
