@@ -16,9 +16,7 @@ const CardModal = ({
     return (
         <Modal open={!!card} closeFunction={closeFunction}>
             <div className="grid grid-cols-2 min-h-[20vh]">
-                <div className="">
-                    <img src={imageUrl} alt="" />
-                </div>
+                <div className="">{/* <img src={imageUrl} alt="" /> */}</div>
                 <div className="p-5 flex flex-col gap-4">
                     <h1>
                         {card.set}-{card.cardNumber}

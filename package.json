@@ -22,7 +22,7 @@
     },
     "scripts": {
         "start": "vite serve",
-        "build": "react-scripts build",
+        "build": "vite build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

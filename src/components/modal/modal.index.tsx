@@ -1,4 +1,26 @@
 import React from "react";
+import ReactDOM from "react-dom";
+
+const OVERLAY_STYLES: React.CSSProperties = {
+    position: "fixed",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#000",
+    opacity: "0.7",
+};
+const CONTENT_STYLES: React.CSSProperties = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#FFF",
+    borderRadius: "6px",
+    overflow: "hidden",
+    maxHeight: "90%",
+    maxWidth: "90%",
+};
 
 const Modal = ({
     open,
@@ -11,15 +33,12 @@ const Modal = ({
 }) => {
     if (!open) return null;
 
-    return (
-        <div
-            className="fixed bg-black/10 h-screen w-screen top-0 left-0 flex items-center justify-center"
-            onClick={() => closeFunction()}
-        >
-            <div className="bg-white rounded-md max-h-full max-w-full overflow-hidden">
-                {children}
-            </div>
-        </div>
+    return ReactDOM.createPortal(
+        <React.Fragment>
+            <div style={OVERLAY_STYLES} onClick={() => closeFunction()} />
+            <div style={CONTENT_STYLES}>{children}</div>
+        </React.Fragment>,
+        document.getElementById("modal-portal")
     );
 };
 
